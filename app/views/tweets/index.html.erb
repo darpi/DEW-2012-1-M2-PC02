@@ -1,4 +1,4 @@
-<h1>Listing tweets</h1>
+<h1>Listado de Tweets</h1>
 
 <%= form_for(@tweet, :url => "user") do |f| %>
   <div class="field">
@@ -10,16 +10,44 @@
   </div>
 <% end %>
 
+
 <%= form_for(@tweet, :url => "read_text") do |f| %>
    <div class="field">
-    <%= f.label :status %><br />
-    <%= f.text_field :status %>
-  </div>
+		<%= f.label :status %><br />
+		<%= f.text_field :status %>
+	</div>
+	
   <div class="actions">
     <%= f.submit "Buscar/Insertar Status" %>
   </div>
 <% end %>
 <br />
 
-<%= @tweet.index%>
+<%= form_for(@tweet) do |f| %>
+  <% @tweet.message = @tweet.index %>
+  
+  <div class="field">
+    <%= f.label :message %><br />
+    <%= f.text_field :message %>
+  </div>
+	
+  <div class="actions">
+    <%= f.submit "Agendar Tweet"%>
+  </div>
+<% end %>
+<br />
+
+<ul id="container">
+	<% @tweets.each do |tweet| %>
+		<li>  
+			<%= tweet.message%>
+		</li>
+	<% end %>
+</ul>
+
+				
+
+
+
+
 

@@ -2,7 +2,7 @@ class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
   def index
-    #@tweets = Tweet.all
+    @tweets = Tweet.all
     #@tweet = Tweet.new
 
     #respond_to do |format|
@@ -10,10 +10,18 @@ class TweetsController < ApplicationController
       #format.json { render json: @tweets }
     #end
 	
+	#@tweet = Tweet.new(params[:tweet])
+	#respond_to do |format|
+     # format.html
+      #format.json { head :no_content }
+    #end	
+	
 	@tweet = Tweet.new(params[:tweet])
-	respond_to do |format|
-      format.html
-      format.json { head :no_content }
+    respond_to do |format|
+      if @tweet.save
+        format.html
+        format.json { render json: @tweet, status: :created, location: @tweet  }
+      end
     end
 	
   end
@@ -106,48 +114,6 @@ class TweetsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
- def update_status
- @tweet = Tweet.new(params[:tweet])
-    respond_to do |format|
-      format.html
-      format.json { head :no_content }
-
-end 
-end
-
- def read_tagged
- @tweet = Tweet.new(params[:tweet])
-    respond_to do |format|
-      format.html
-      format.json { head :no_content }
-
-end 
-end
-
-#def read_follow
- #@tweet = Tweet.new(params[:tweet])
-  #  respond_to do |format|
-   #   format.html
-    #  format.json { head :no_content }
-
-#end 
-#end
-
-def read_follow
-    @tweet = Tweet.new(params[:tweet])
-
-    respond_to do |format|
-      if @tweet.save
-        format.html { redirect_to @tweet, notice: 'Tweet was successfully created.' }
-        format.json { render json: @tweet, status: :created, location: @tweet }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @tweet.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-  
-  
+ 
   
 end

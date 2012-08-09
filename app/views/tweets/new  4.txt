@@ -1,0 +1,40 @@
+<h1>Listado de Tweets</h1>
+
+<%= form_for(@tweet, :url => "user") do |f| %>
+  <div class="field">
+    <%= f.label :user %><br />
+    <%= f.text_field :user %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Ver ultimo Tweet" %>
+  </div>
+<% end %>
+
+<%= form_for(@tweet, :url => "read_text") do |f| %>
+   <div class="field">
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Buscar/Insertar Status" %>
+  </div>
+<% end %>
+<br />
+
+<ul id="chat_container">
+	<% @tweets.each do |tweet| %>
+		<li>  
+			<%= tweet.status %>
+		</li>
+		<li>  
+			<%= tweet.message %>
+		</li>
+	<% end %>
+</ul>
+
+<%= form_for(@tweet, :url => "index") do |f| %>
+  <%= @tweet.index%>
+<% end %>
+<br />
+
+
