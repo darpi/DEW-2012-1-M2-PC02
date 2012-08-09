@@ -1,0 +1,25 @@
+div#encabezado{
+	background-image: url(http://localhost:3000/assets/bg_black.jpg);
+	background-size: 950px 190px;
+}
+div#logo{
+    text-align: center;
+}
+table#form {	
+	text-shadow: 0 1px 0 white;
+	border: 1px solid #EEE;
+	position: relative;
+	margin-bottom: 10px;
+	/*line-height: 16px;*/
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+	background: white;
+	padding: 5px 5px;
+}
+td.form input[type="text"]{
+	width: 350px;
+}
