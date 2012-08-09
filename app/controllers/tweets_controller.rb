@@ -18,10 +18,10 @@ class TweetsController < ApplicationController
 	
 	@tweet = Tweet.new(params[:tweet])
     respond_to do |format|
-      if @tweet.save
+      #if @tweet.save
         format.html
         format.json { render json: @tweet, status: :created, location: @tweet  }
-      end
+      #end
     end
 	
   end
@@ -60,7 +60,7 @@ class TweetsController < ApplicationController
 
     respond_to do |format|
       if @tweet.save
-        format.html { redirect_to tweet_path, notice: 'Tweet was successfully created.' }
+        format.html { redirect_to @tweet, notice: 'El Tweet se agendó correctamente.' }
         format.json { render json: @tweet, status: :created, location: @tweet }
       else
         format.html { render action: "new" }
@@ -76,7 +76,7 @@ class TweetsController < ApplicationController
     
     respond_to do |format|
       if @tweet.update_attributes(params[:tweet])
-        format.html { redirect_to tweets_path }
+        format.html { redirect_to @tweet }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
